@@ -1,7 +1,9 @@
-package com.site.Arrendamento.entidades;
+package com.site.Arrendamento.DTO;
 
 import com.site.Arrendamento.Enum.TipoUsuario;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,16 +11,11 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name="usuarios")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class usuario {
+public class UsuarioEntradaDtO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
 
     @Column(unique = true, nullable = false)
     @NotBlank(message = "Nome é obrigatório")
@@ -36,13 +33,8 @@ public class usuario {
     private String senha;
 
     @Enumerated(EnumType.STRING)
-        private TipoUsuario tipoUsuario; // Tipo
+    private TipoUsuario tipoUsuario; // Tipo
 
-    @Column( name = "data_cadastro",nullable = false,updatable = false)
-    private LocalDateTime data_cadastro;
 
-    @PrePersist
-    public void prePersist(){
-        this.data_cadastro = LocalDateTime.now();
-    }
+
 }
