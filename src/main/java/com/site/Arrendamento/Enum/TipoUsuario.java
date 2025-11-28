@@ -1,6 +1,6 @@
 package com.site.Arrendamento.Enum;
 
 public enum TipoUsuario {
-    USUARIO,
+ COMUM,
     ADMINISTRADOR;
 }
