@@ -6,6 +6,7 @@ import com.site.Arrendamento.Enum.TipoContrato;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,6 +34,7 @@ public class Imovel {
 
     @Column(nullable = false, precision=10, scale=5)
     @NotNull(message = "O preço é obrigatório")
+    @Positive(message = "O preço deve ser um valor positivo")
     private BigDecimal preco;
 
 
@@ -56,11 +58,11 @@ public class Imovel {
     @ManyToOne
     @JoinColumn(name = "proprietario_id",nullable = false)
     @NotNull(message = "O imovel deve ter um proprietário ")
-    private usuario proprietario;
+    private Usuario proprietario;
 
 
-  /* @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "proprietario_id",nullable = false)
+   @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "localizacao_id",nullable = false)
     @NotNull(message = "O imovel deve ter uma localização ")
-    private Localizacao localizacao;*/
+    private Localizacao localizacao;
 }

@@ -1,35 +1,31 @@
 package com.site.Arrendamento.DTO;
 
 import com.site.Arrendamento.Enum.TipoUsuario;
-import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsuarioEntradaDtO {
+public class UsuarioEntradaDTO {
 
 
-    @Column(unique = true, nullable = false)
+
     @NotBlank(message = "Nome é obrigatório")
     private String nome;
 
-    @NotBlank(message = "O contacto é obigatório")
-    @Column( nullable = false)
+    @NotBlank(message = "telefone é obrigatório")
     private String telefone;
 
-    @Column(unique = true)
+    @Email(message ="imail inválido" )
     private String email;
 
     @NotBlank(message = "A senha é obrigatória")
-    @Column( nullable = false)
     private String senha;
 
     @Enumerated(EnumType.STRING)
