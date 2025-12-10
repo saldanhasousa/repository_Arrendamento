@@ -39,10 +39,10 @@ public class Usuario {
         private TipoUsuario tipoUsuario; // Tipo
 
     @Column( name = "data_cadastro",nullable = false,updatable = false)
-    private LocalDateTime data_cadastro;
+    private LocalDateTime dataregisto;
 
     @PrePersist
     public void prePersist(){
-        this.data_cadastro = LocalDateTime.now();
+        this.dataregisto = LocalDateTime.now();
     }
 }

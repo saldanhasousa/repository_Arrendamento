@@ -2,12 +2,15 @@ package com.site.Arrendamento.DTO;
 
 import com.site.Arrendamento.entidades.Localizacao;
 import com.site.Arrendamento.entidades.Usuario;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -34,11 +37,13 @@ public class ImovelDTOEntrada {
     @NotBlank(message = "O estado do imovel é obrigatório")
     private String estadoImovel;
 
-    @NotBlank(message = "O proprietario do imovel é obrigatório")
-    private  long proprietario_id;
 
-    @NotBlank(message = "A localização do imovel é obrigatório")
+    private  UsuarioEntradaDTO usuario;
+
+    @Valid
+    @NotNull(message = "A localização é obrigatória")
     private LocalizacaoDTOEntrada localizacao;
+
 
 
 

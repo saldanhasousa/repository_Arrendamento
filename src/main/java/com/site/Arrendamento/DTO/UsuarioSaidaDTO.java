@@ -1,5 +1,6 @@
 package com.site.Arrendamento.DTO;
 
+import com.site.Arrendamento.entidades.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,4 +16,16 @@ public class UsuarioSaidaDTO {
     private String tipoUsuario;
     private String dataCadastro;
 
+    //Pediu para criar construtor
+    public UsuarioSaidaDTO(Usuario usuario) {
+
+        //Para que retorn os usuarios
+        this.id = usuario.getId();
+        this.nome = usuario.getNome();
+        this.telefone = usuario.getTelefone();
+        this.email = usuario.getEmail();
+        //Pediu para fazer isso
+        this.tipoUsuario = String.valueOf(usuario.getTipoUsuario());
+        //this.dataCadastro = usuario.getDataCadastro().toString();
+    }
 }

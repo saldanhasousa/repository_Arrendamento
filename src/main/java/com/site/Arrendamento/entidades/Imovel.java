@@ -21,7 +21,7 @@ public class Imovel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  long id;
+    private long id;
 
 
     @Column(nullable = false,unique = true)
@@ -49,6 +49,7 @@ public class Imovel {
 
 
     @Enumerated(EnumType.STRING)
+
     @NotNull(message = "O estado do imovel contrato é obrigatório")
     private EstadoImovel estadoImovel;
 

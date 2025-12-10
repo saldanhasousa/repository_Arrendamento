@@ -16,8 +16,6 @@ import java.util.List;
 @AllArgsConstructor
 public class LocalizacaoDTOEntrada {
 
-    private String provincia = "Luanda";
-
     @NotBlank(message = "O municipio é obrigatório")
     private String municipio;
 
