@@ -19,7 +19,8 @@ public class LocalizacaoControlo {
 
     @PostMapping
     public ResponseEntity<String> criarLocalizacao(@RequestBody @Valid LocalizacaoDTOEntrada localizacaoDTOEntrada){
-        return localizacaoService.criarLocalizacao(localizacaoDTOEntrada);
+        localizacaoService.criarLocalizacao(localizacaoDTOEntrada);
+        return ResponseEntity.ok("Localização criada com sucesso");
     }
 }
 

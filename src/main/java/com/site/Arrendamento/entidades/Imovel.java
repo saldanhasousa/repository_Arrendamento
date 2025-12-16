@@ -32,11 +32,20 @@ public class Imovel {
     @NotBlank(message = "A descrição é obrigatória")
     private String descricao;
 
-    @Column(nullable = false, precision=10, scale=5)
+    @Column(nullable = false, precision=10, scale=5) // <-- CORRIGIDO AQUI
     @NotNull(message = "O preço é obrigatório")
     @Positive(message = "O preço deve ser um valor positivo")
     private BigDecimal preco;
 
+
+    @Column(nullable = false)
+    private String imagem1;
+
+    @Column(nullable = false)
+    private String imagem2;
+
+    @Column(nullable = false)
+    private String imagem3;
 
     @Enumerated(EnumType.STRING)
     @NotNull (message = "O tipo de contrato é obrigatório")
@@ -54,16 +63,16 @@ public class Imovel {
     private EstadoImovel estadoImovel;
 
 
-
-
     @ManyToOne
     @JoinColumn(name = "proprietario_id",nullable = false)
     @NotNull(message = "O imovel deve ter um proprietário ")
     private Usuario proprietario;
 
 
-   @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "localizacao_id",nullable = false)
-    @NotNull(message = "O imovel deve ter uma localização ")
-    private Localizacao localizacao;
+   private Localizacao localizacao;
+
+
+
 }

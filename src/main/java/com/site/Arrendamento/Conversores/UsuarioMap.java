@@ -11,6 +11,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface UsuarioMap {
     @Mapping(target = "id", ignore = true)
+
     Usuario paraUsuario(UsuarioEntradaDTO entradaDto);
 
     @Mapping(target = "id", ignore = true)
