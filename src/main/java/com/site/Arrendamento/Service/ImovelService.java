@@ -12,6 +12,7 @@ import com.site.Arrendamento.entidades.Usuario;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
+import java.util.List;
 
 
 @Service
@@ -35,6 +36,7 @@ public class ImovelService {
 
 
 
+
         Imovel imovel=imovelMap.paraImovel(imovelDTOEntrada);
         imovel.setProprietario(usuario);
 
@@ -51,28 +53,22 @@ public class ImovelService {
 
 
 
+    }
+    public List<Imovel> listarTodos() {
+        return imovelRepository.findAll();
+    }
 
-   /* }
-
-    private String salvarImagem(MultipartFile imagem) {
-        try {
-            File pasta = new File(uploadDir);
-            if (!pasta.exists()) pasta.mkdirs();
-
-            String nome = System.currentTimeMillis() + "_" + imagem.getOriginalFilename();
-            Path caminho = Paths.get(uploadDir + nome);
-
-            Files.write(caminho, imagem.getBytes());
-
-            // caminho que será salvo no banco
-            return "imoveis/" + nome;
-
-        } catch (Exception e) {
-            throw new RuntimeException("Erro ao salvar imagem");
-        }*/
+    public void deletar(Long id) {
+        if (!imovelRepository.existsById(id)) {
+            throw new RuntimeException("Imóvel não encontrado");
+        }
+        imovelRepository.deleteById(id);
+    }
 
 
-    }}
+}
+
+
 
 
 

@@ -41,6 +41,8 @@ public class Usuario {
     @Column( name = "data_cadastro",nullable = false,updatable = false)
     private LocalDateTime dataregisto;
 
+
+
     @PrePersist
     public void prePersist(){
         this.dataregisto = LocalDateTime.now();

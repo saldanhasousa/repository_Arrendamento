@@ -32,6 +32,13 @@ public class UsuarioControlo {
         List<UsuarioSaidaDTO> lista = usuarioService.listarUsuarios();
         return ResponseEntity.ok(lista);
     }
+
+    // DELETE /usuario/{id}
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletarUsuario(@PathVariable Long id) {
+        usuarioService.deletarUsuario(id);
+        return ResponseEntity.ok("Usuário deletado com sucesso");
+    }
 }
 
 
