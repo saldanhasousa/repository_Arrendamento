@@ -28,8 +28,8 @@ public class UsuarioEntradaDTO {
     @NotBlank(message = "A senha é obrigatória")
     private String senha;
 
-    @Enumerated(EnumType.STRING)
-    private TipoUsuario tipoUsuario; // Tipo
+   // @Enumerated(EnumType.STRING)
+   // private TipoUsuario tipoUsuario; // Tipo
 
 
 

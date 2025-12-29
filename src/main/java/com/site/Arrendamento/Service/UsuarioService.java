@@ -3,6 +3,7 @@ package com.site.Arrendamento.Service;
 import com.site.Arrendamento.Conversores.UsuarioMap;
 import com.site.Arrendamento.DTO.UsuarioEntradaDTO;
 import com.site.Arrendamento.DTO.UsuarioSaidaDTO;
+import com.site.Arrendamento.Enum.TipoUsuario;
 import com.site.Arrendamento.Repository.UsuarioRepository;
 import com.site.Arrendamento.entidades.Usuario;
 import lombok.AllArgsConstructor;
@@ -22,13 +23,21 @@ public class UsuarioService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public  UsuarioSaidaDTO CriarUsuario(UsuarioEntradaDTO entrada){
+    public  void CriarUsuario(UsuarioEntradaDTO entrada){
         Usuario usuario = usuarioMap.paraUsuario(entrada);
         // 🔹 Criptografar a senha antes de salvar
        usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
-        Usuario usuarioSalvo = usuarioRepository.save(usuario);
+       usuario.setTipoUsuario(TipoUsuario.COMUM);
+        usuarioRepository.save(usuario);
 
-        return usuarioMap.paraUsuarioSaidaDTO(usuarioSalvo);
+
+    }
+
+    public void criarAdmin(UsuarioEntradaDTO entrada){
+        Usuario usuario=usuarioMap.paraUsuario(entrada);
+        usuario.setSenha(passwordEncoder.encode (usuario.getSenha()));
+        usuario.setTipoUsuario(TipoUsuario.COMUM);
+        usuarioRepository.save(usuario);
 
     }
 

@@ -1,5 +1,6 @@
 package com.site.Arrendamento.Controlo;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import com.site.Arrendamento.DTO.UsuarioEntradaDTO;
@@ -18,12 +19,18 @@ public class UsuarioControlo {
     @Autowired
     private UsuarioService usuarioService;
 
-    @PostMapping
-    public ResponseEntity<UsuarioSaidaDTO> CadastrarUsuario(@RequestBody @Valid UsuarioEntradaDTO entrada){
-        UsuarioSaidaDTO usuarioSaidaDTO = usuarioService.CriarUsuario(entrada);
+    @PostMapping("/user")
+    public ResponseEntity<String> CadastrarUsuario(@RequestBody @Valid UsuarioEntradaDTO entrada){
+      usuarioService.CriarUsuario(entrada);
 
-        return new ResponseEntity<>(usuarioSaidaDTO, HttpStatus.CREATED);
+        return  ResponseEntity.ok("Usuário criado com sucesso");
     }
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    @PostMapping("/admin")
+public ResponseEntity<String>CadastrarAdmim(@RequestBody @Valid UsuarioEntradaDTO entrada){
+        usuarioService.criarAdmin(entrada);
+        return ResponseEntity.ok("Administrador criado com sucesso");
+}
 
 
     //Para apresentar os usuario no frontend

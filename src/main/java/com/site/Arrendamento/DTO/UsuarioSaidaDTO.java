@@ -16,7 +16,7 @@ public class UsuarioSaidaDTO {
     private String tipoUsuario;
     private String dataCadastro;
 
-    //Pediu para criar construtor
+
     public UsuarioSaidaDTO(Usuario usuario) {
 
         //Para que retorn os usuarios

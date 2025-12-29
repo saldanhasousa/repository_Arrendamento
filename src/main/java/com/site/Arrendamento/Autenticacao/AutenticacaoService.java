@@ -9,7 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AutentcacaoService {
+public class AutenticacaoService {
    @Autowired
     private UsuarioRepository usuarioRepository;
     @Autowired
@@ -28,7 +28,7 @@ public class AutentcacaoService {
 
         String token = jwtService.gerarToken(usuario);
 
-        return new AuthResponseDTO(token, usuario.getEmail(), usuario.getTipoUsuario().name());
+        return new AuthResponseDTO(token, usuario.getEmail(), usuario.getTipoUsuario().toString());
     }
 
 

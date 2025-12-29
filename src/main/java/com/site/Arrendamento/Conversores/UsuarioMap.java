@@ -11,7 +11,8 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface UsuarioMap {
     @Mapping(target = "id", ignore = true)
-
+    @Mapping(target = "tipoUsuario", ignore = true)
+   // @Mapping(target = "dataCadastro", ignore = true)
     Usuario paraUsuario(UsuarioEntradaDTO entradaDto);
 
     @Mapping(target = "id", ignore = true)
